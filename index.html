@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock Paper Scissors</title>
+</head>
+<body>
+    <script>
+       
+        //get input from the player in a popup window
+        function getPlayerChoice() {
+           let select = prompt("Chose: rock, paper or scissors").toLowerCase();
+           return select;
+        }
+                
+        //randomly returns rock, paper or scissors as the computers(opponent) choice
+        function getComputerChoice() {
+            const pick = ["rock", "paper", "scissors"]
+            return pick[Math.floor(Math.random() * pick.length)];
+        }
+           
+        //store score
+        let you = 0;
+        let computer = 0;
+
+        //play a single round of the game - players can input their choice
+        function playRound(playerSelection,computerSelection) {
+            if((playerSelection === "rock" && computerSelection === "paper") || (playerSelection === "paper" && computerSelection === "scissors") || (playerSelection === "scissors" && computerSelection === "rock")) {
+                //return "You lose";  
+                computer ++;                     
+                }
+            else if((playerSelection === "rock" && computerSelection === "rock") || (playerSelection === "paper" && computerSelection === "paper") || (playerSelection === "scissors" && computerSelection === "scissors")) {
+                //return "It's a draw";
+                }
+            else {
+                //return "You win";
+                you ++;
+                }                  
+            }
+                
+        //play 5 rounds and decide the winner at the end 
+        function game() {
+            for (i=1; i<=5; i++) {
+                const playerSelection = getPlayerChoice();
+                const computerSelection = getComputerChoice();
+                console.log("Opponents choice: " + computerSelection);
+                console.log("Your choice: " + playerSelection);
+                console.log("computer: " + computer + " you: " + you);
+                playRound(playerSelection,computerSelection);
+            }
+            console.log("Final socre: computer: " + computer + " you: " + you);   
+                         
+        }
+        game();         
+        
+        
+    </script>
+    
+</body>
+</html>
